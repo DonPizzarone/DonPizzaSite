@@ -49,17 +49,42 @@ li.dropdown {
 <body>
 
 <ul>
-  <li><a href="#home">Home</a></li>
+  <li><a href="index.html">Home</a></li>
   <li style="float:right" class="dropdown">
     <a href="javascript:void(0)" class="dropbtn">Menu</a>
     <div class="dropdown-content">
-      <a href="config.html">Config</a>
+      <a href="#">Config</a>
       <a href="#">Sair</a>
     </div>
   </li>
 </ul>
 
-<h3>-Cardápio</h3>
+<h3>-Configurações</h3>
+<form>
+  <input type="checkbox" name="push" value="notifi"> Receber notificações de promoções<br> 
+  <input type="submit" value="Salvar">
+</form>
+<h4>Informações de entrega</h4>
+<form action="/action_page.php">
+  Nome Completo:<br>
+  <input type="text" name="name" value="">
+  <br>
+  Endereço:<br>
+  <input type="text" name="ende" value="">
+  <br>
+  Nº:<br>
+  <input type="text" name="num" value="">
+  <br>
+  Complemento:<br>
+  <input type="text" name="compl" value="">
+  <br>
+  Telefone:<br>
+  <input type="text" name="tel" value="">
+  <br>
+  <br>
+  <input type="submit" value="Salvar">
+</form> 
+
 
 </body>
 </html>
