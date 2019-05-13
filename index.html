@@ -44,9 +44,37 @@ li.dropdown {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+.add #menu{
+  width: 420px;
+  height: 200px;
+  padding: 10px;
+  border: 5px solid gray;
+  margin: 0;
+  position: relative
+}
+
+.add #cart{
+  width: 200px;
+  height: 500px;
+  padding: 10px;
+  border: 5px solid gray;
+  margin: 0;
+}
+
+.add #addMenu {
+  position: absolute; 
+  bottom: 0;
+  right: 0;
+}
+
+text {
+  display: none;
+}
+
 </style>
 </head>
-<body>
+<body class="add">
 
 <ul>
   <li><a href="#home">Home</a></li>
@@ -60,6 +88,60 @@ li.dropdown {
 </ul>
 
 <h3>-Cardápio</h3>
+
+<div style="float:right" id="cart">
+<text id="sausage"> <n id="sauNumber">1</n> Pizza de calabresa <button onclick="incrementCart('sauNumber')">+</button><button onclick="decrementCart('sauNumber','sausage')">-</button> </text>
+<text id="plain"> <n id="plaNumber">1</n> Pizza de muçarela <button onclick="incrementCart('plaNumber')">+</button><button onclick="decrementCart('plaNumber','plain')">-</button> </text>
+</div>
+
+<div style="float:left" id="menu">
+	<img src="img/pizza-calabresa.jpg" width="200" height="200" alt="Pizza calabresa" style="float:left">
+    Pizza de calabresa.<br>
+    50 conto.<br>
+<button id="addMenu" onclick="addCart('sausage')">+</button>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<div style="float:left" id="menu">
+	<img src="img/pizza-plain.jpg" width="200" height="200" alt="Pizza Muçarela" style="float:left">
+    Pizza de muçarela.<br>
+    50 conto.<br>
+<button id="addMenu" onclick="addCart('plain')">+</button>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<script>
+
+function addCart(type) {
+  var x = document.getElementById(type);
+  x.style.display = "block";
+}
+
+function removeCart(type) {
+  var x = document.getElementById(type);
+  x.style.display = "none";
+}
+
+function incrementCart(Ntype) {
+    var fromText = document.getElementById(Ntype);
+    var n = fromText.innerHTML;
+    n++;
+    fromText.innerHTML = n;
+}
+
+function decrementCart(Ntype, type) {
+    var fromText = document.getElementById(Ntype);
+    var n = fromText.innerHTML;
+    n--;
+    fromText.innerHTML = n;
+	if (n == 0){
+		removeCart(type);
+		fromText.innerHTML = 1;
+	}
+}
+
+</script>
+
 
 </body>
 </html>
