@@ -60,9 +60,10 @@ li.dropdown {
   padding: 10px;
   border: 5px solid gray;
   margin: 0;
+  position: relative;
 }
 
-.add #addMenu {
+.add #addButton {
   position: absolute; 
   bottom: 0;
   right: 0;
@@ -70,6 +71,18 @@ li.dropdown {
 
 text {
   display: none;
+}
+
+.add #addTotal{
+  position: absolute; 
+  bottom: 0;
+  display: block;
+}
+
+.add #checkButton{
+  position: absolute; 
+  right: 0;
+  bottom: 0;
 }
 
 </style>
@@ -90,40 +103,45 @@ text {
 <h3>-Cardápio</h3>
 
 <div style="float:right" id="cart">
-<text id="sausage"> <n id="sauNumber">1</n> Pizza de calabresa <button onclick="incrementCart('sauNumber')">+</button><button onclick="decrementCart('sauNumber','sausage')">-</button> </text>
-<text id="plain"> <n id="plaNumber">1</n> Pizza de muçarela <button onclick="incrementCart('plaNumber')">+</button><button onclick="decrementCart('plaNumber','plain')">-</button> </text>
+<b>-Carrinho</b>
+<text id="sausage"> <n id="sauNumber">0</n> Pizza de calabresa <button onclick="incrementCart('sauNumber','sausage'), incrementTotal(51,'varTotal')">+</button><button onclick="decrementCart('sauNumber','sausage'), decrementTotal(51, 'varTotal')">-</button> </text>
+<text id="plain"> <n id="plaNumber">0</n> Pizza de muçarela <button onclick="incrementCart('plaNumber','plain'), incrementTotal(50,'varTotal')">+</button><button onclick="decrementCart('plaNumber','plain'), decrementTotal(50, 'varTotal')">-</button> </text>
+<text id="addTotal">Total R$: <n id="varTotal" value = "0">0</n></text>
+<button id="checkButton" onclick="devOversight()">Checkout</button>
 </div>
 
 <div style="float:left" id="menu">
 	<img src="img/pizza-calabresa.jpg" width="200" height="200" alt="Pizza calabresa" style="float:left">
     Pizza de calabresa.<br>
-    50 conto.<br>
-<button id="addMenu" onclick="addCart('sausage')">+</button>
+    Massa Grossa, calabresa<br>
+    fatiada, cebola e azeitonas<br><br>
+    Preço: 51 reais.<br>
+<button id="addButton" onclick="incrementCart('sauNumber','sausage'), incrementTotal(51,'varTotal')">+</button>
 </div>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 <div style="float:left" id="menu">
 	<img src="img/pizza-plain.jpg" width="200" height="200" alt="Pizza Muçarela" style="float:left">
     Pizza de muçarela.<br>
-    50 conto.<br>
-<button id="addMenu" onclick="addCart('plain')">+</button>
+    Massa Grossa, muçarela e<br>
+    oregano.<br><br>
+    Preço: 50 reais.<br>
+<button id="addButton" onclick="incrementCart('plaNumber','plain'), incrementTotal(50,'varTotal')">+</button>
 </div>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 <script>
-
-function addCart(type) {
-  var x = document.getElementById(type);
-  x.style.display = "block";
-}
 
 function removeCart(type) {
   var x = document.getElementById(type);
   x.style.display = "none";
 }
 
-function incrementCart(Ntype) {
-    var fromText = document.getElementById(Ntype);
+function incrementCart(Ntype, type) {
+    var x = document.getElementById(type);
+    x.style.display = "block";
+	
+	var fromText = document.getElementById(Ntype);
     var n = fromText.innerHTML;
     n++;
     fromText.innerHTML = n;
@@ -131,13 +149,31 @@ function incrementCart(Ntype) {
 
 function decrementCart(Ntype, type) {
     var fromText = document.getElementById(Ntype);
-    var n = fromText.innerHTML;
+	var n = fromText.innerHTML;
     n--;
     fromText.innerHTML = n;
 	if (n == 0){
 		removeCart(type);
-		fromText.innerHTML = 1;
+		fromText.innerHTML = 0;
 	}
+}
+
+function incrementTotal(price, Ntype){
+	var fromText = document.getElementById(Ntype);
+	var n = +fromText.innerHTML;
+	n = price + n;
+	fromText.innerHTML = n;
+}
+
+function decrementTotal(price, Ntype){
+	var fromText = document.getElementById(Ntype);
+	var n = +fromText.innerHTML;
+	n = n - price;
+	fromText.innerHTML = n;
+}
+
+function devOversight() {
+  alert("To be continued...\n\nɴᴏᴡ ᴘʟᴀʏɪɴɢ: Yes - Roundabout\n───────────────⚪───────────────────\n◄◄⠀▐▐ ⠀►►⠀⠀ ⠀ 0:37 / 8:24 ⠀ ───○ 🔊⠀ ᴴᴰ ⚙ ❐ ⊏⊐");
 }
 
 </script>
