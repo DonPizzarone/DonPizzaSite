@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <style>
@@ -45,13 +46,13 @@ li.dropdown {
   display: block;
 }
 
-.add #menu{
-  width: 420px;
-  height: 200px;
+.add #addr{
+  width: 400px;
+  height: 60px;
   padding: 10px;
   border: 5px solid gray;
   margin: 0;
-  position: relative
+  position: relative;
 }
 
 .add #cart{
@@ -73,12 +74,17 @@ text {
   display: none;
 }
 
+.add #sausage{
+  display: block;
+}
+
 .add #addTotal{
   position: absolute; 
   bottom: 0;
   display: block;
 }
 
+.add #checkButton{
 .add #checkButton{
   position: absolute; 
   right: 0;
@@ -90,7 +96,7 @@ text {
 <body class="add">
 
 <ul>
-  <li><a href="#home">Home</a></li>
+  <li><a href="index.html">Home</a></li>
   <li style="float:right" class="dropdown">
     <a href="javascript:void(0)" class="dropbtn">Menu</a>
     <div class="dropdown-content">
@@ -100,35 +106,20 @@ text {
   </li>
 </ul>
 
-<h3>-Cardápio</h3>
+<h3>-Checkout</h3>
 
 <div style="float:right" id="cart">
 <b>-Carrinho</b>
-<text id="sausage"> <n id="sauNumber">0</n> Pizza de calabresa <button onclick="incrementCart('sauNumber','sausage'), incrementTotal(51,'varTotal')">+</button><button onclick="decrementCart('sauNumber','sausage'), decrementTotal(51, 'varTotal')">-</button> </text>
+<text id="sausage"> <n id="sauNumber">1</n> Pizza de calabresa <button onclick="incrementCart('sauNumber','sausage'), incrementTotal(51,'varTotal')">+</button><button onclick="decrementCart('sauNumber','sausage'), decrementTotal(51, 'varTotal')">-</button> </text>
 <text id="plain"> <n id="plaNumber">0</n> Pizza de muçarela <button onclick="incrementCart('plaNumber','plain'), incrementTotal(50,'varTotal')">+</button><button onclick="decrementCart('plaNumber','plain'), decrementTotal(50, 'varTotal')">-</button> </text>
-<text id="addTotal">Total R$: <n id="varTotal" value = "0">0</n></text>
-<button id="checkButton" onclick="window.location.href='checkout.html'">Checkout</button>
+<text id="addTotal">Total R$: <n id="varTotal" value = "51">51</n></text>
 </div>
 
-<div style="float:left" id="menu">
-	<img src="img/pizza-calabresa.jpg" width="200" height="200" alt="Pizza calabresa" style="float:left">
-    Pizza de calabresa.<br>
-    Massa Grossa, calabresa<br>
-    fatiada, cebola e azeitonas<br><br>
-    Preço: 51 reais.<br>
-<button id="addButton" onclick="incrementCart('sauNumber','sausage'), incrementTotal(51,'varTotal')">+</button>
+<br><br><br><br><b>Deliver in-</b><br>
+<div style="float:left" id="addr">
+<img src="img/pretinho.png" width="60" height="60" alt="Pizza calabresa" style="float:left">
+    Jamilson st, n.69 - block D<br>
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-<div style="float:left" id="menu">
-	<img src="img/pizza-plain.jpg" width="200" height="200" alt="Pizza Muçarela" style="float:left">
-    Pizza de muçarela.<br>
-    Massa Grossa, muçarela e<br>
-    oregano.<br><br>
-    Preço: 50 reais.<br>
-<button id="addButton" onclick="incrementCart('plaNumber','plain'), incrementTotal(50,'varTotal')">+</button>
-</div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 <script>
 
@@ -171,11 +162,11 @@ function decrementTotal(price, Ntype){
 	n = n - price;
 	fromText.innerHTML = n;
 }
-/*
+
 function devOversight() {
-  alert("To be continued...\n\nɴᴏᴡ ᴘʟᴀʏɪɴɢ: Yes - Roundabout\n───────────⚪───────────────────────\n◄◄⠀▐▐ ⠀►►⠀⠀ ⠀ 0:37 / 8:24 ⠀ ───○ 🔊⠀ ᴴᴰ ⚙ ❐ ⊏⊐");
+  alert("To be continued...\n\nɴᴏᴡ ᴘʟᴀʏɪɴɢ: Yes - Roundabout\n───────────────⚪───────────────────\n◄◄⠀▐▐ ⠀►►⠀⠀ ⠀ 0:37 / 8:24 ⠀ ───○ 🔊⠀ ᴴᴰ ⚙ ❐ ⊏⊐");
 }
-*/
+
 </script>
 
 
