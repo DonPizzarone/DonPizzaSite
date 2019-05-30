@@ -55,6 +55,26 @@ li.dropdown {
   position: relative;
 }
 
+.add #payo{
+  width: 500px;
+  height: 400px;
+  padding: 10px;
+  border: 5px solid gray;
+  margin: 0;
+  position: relative;
+  display: block;
+}
+
+.add #payd{
+  width: 500px;
+  height: 400px;
+  padding: 10px;
+  border: 5px solid gray;
+  margin: 0;
+  position: relative;
+  display: none;
+}
+
 .add #cart{
   width: 200px;
   height: 500px;
@@ -84,8 +104,8 @@ text {
   display: block;
 }
 
-.add #checkButton{
-.add #checkButton{
+
+.add #payButton{ 
   position: absolute; 
   right: 0;
   bottom: 0;
@@ -119,6 +139,40 @@ text {
 <div style="float:left" id="addr">
 <img src="img/pretinho.png" width="60" height="60" alt="Pizza calabresa" style="float:left">
     Jamilson st, n.69 - block D<br>
+</div>
+
+
+<br><br><br><br><b><br><br><br><br><b><br><br><br><br>
+<button onclick="showOnline()">Pagar online</button>
+<button onclick="showOnDelivery()">Pagar na entrega</button>
+<br>
+<div style="float:left" id="payo">
+<form action="/action_page.php">
+  Numero do cartão:                          Codigo de segurança:<br>
+  <input type="text" name="name" value="">                     <input type="text" name="ende" value="">
+  <br>
+  Nome completo:<br>
+  <input type="text" name="num" value="">
+  <br>
+  Data de expiração:<br>
+  <input type="text" name="compl" value="">
+  <br>
+  CPF:<br>
+  <input type="text" name="tel" value="">
+  <br>
+  <br>
+</form> 
+<button id="payButton" onclick="window.location.href='finish.html'">Pagar</button>
+
+</div>
+
+<div style="float:left" id="payd">
+<input type="radio" name="typeP" onfocus="Maquininha()" checked="checked">Dinheiro</input><br><br>
+     Troco:<br>
+     <input id="troco" type="text" name="trocao" value="0.0"><br><br>
+<input type="radio" name="typeP" onfocus="Troco()">Maquininha</input><br>
+<button id="payButton" onclick="window.location.href='finish.html'">Pagar</button>
+
 </div>
 
 <script>
@@ -163,8 +217,29 @@ function decrementTotal(price, Ntype){
 	fromText.innerHTML = n;
 }
 
-function devOversight() {
-  alert("To be continued...\n\nɴᴏᴡ ᴘʟᴀʏɪɴɢ: Yes - Roundabout\n───────────────⚪───────────────────\n◄◄⠀▐▐ ⠀►►⠀⠀ ⠀ 0:37 / 8:24 ⠀ ───○ 🔊⠀ ᴴᴰ ⚙ ❐ ⊏⊐");
+function showOnline(){
+	var x = document.getElementById("payo");
+    x.style.display = "block";
+	
+	var y = document.getElementById("payd");
+    y.style.display = "none";
+}
+
+function showOnDelivery(){
+	var x = document.getElementById("payo");
+    x.style.display = "none";
+	
+	var y = document.getElementById("payd");
+    y.style.display = "block";
+	
+}
+
+function Troco(){
+	document.getElementById("troco").disabled = true;
+}
+
+function Maquininha(){
+	document.getElementById("troco").disabled = false;
 }
 
 </script>

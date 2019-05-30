@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+li {
+  float: left;
+}
+li a, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+li a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+li.dropdown {
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+.dropdown-content a:hover {background-color: #f1f1f1;}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.add #cancelOrder{
+  width: 250px;
+  height: 55px;
+  padding: 10px;
+  border: 5px solid gray;
+  margin: 0;
+  position: relative;
+  display: none;
+}
+
+.add #statusOrder{
+  width: 250px;
+  height: 270px;
+  padding: 10px;
+  border: 5px solid gray;
+  margin: 0;
+  position: relative;
+}
+
+.add #devDiv{
+  width: 250px;
+  height: 270px;
+  padding: 10px;
+  border: 5px solid gray;
+  margin: 0;
+  position: relative;
+}
+
+.add #recebido{
+  display: none;
+}
+
+.add #saiu{
+  display: none;
+}
+
+.add #entregue{
+  display: none;
+}
+
+.add #rButton{ 
+  position: absolute; 
+  right: 0;
+  bottom: 0;
+  display: block;
+}
+
+.add #sButton{ 
+  position: absolute; 
+  right: 0;
+  bottom: 0;
+  display: none;
+}
+
+.add #eButton{ 
+  position: absolute; 
+  right: 0;
+  bottom: 0;
+  display: none;
+}
+
+
+</style>
+</head>
+<body class="add">
+
+<ul>
+  <li><a href="index.html">Home</a></li>
+  <li style="float:right" class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Menu</a>
+    <div class="dropdown-content">
+      <a href="config.html">Config</a>
+      <a href="#">Sair</a>
+    </div>
+  </li>
+</ul>
+
+<div id="statusOrder" style="float:right">
+<br>
+<b>Pedido enviado</b>
+<br>
+<b id="recebido">
+              |<br>
+             V
+<br>Pedido Recebido<br>
+
+
+</b>
+<b id="saiu">
+              |<br>
+             V
+<br>Pedido saiu para entrega<br></b>
+<b id="entregue">
+              |<br>
+             V
+<br>Pedido entregue</b>
+<button id="sButton" onclick="showSaiu()">Confirmar saída</button>
+<button id="rButton" onclick="showRecebido()">Confirmar pedido</button>
+<button id="eButton" onclick="showEntregue()">Confirmar Entrega</button>
+</div>
+
+
+<h3>- Só esperar agora</h3><br>
+<button id="cancelButton" onclick="showCancel()">Cancelar Pedido</button><br><br><br><br>
+<div id="cancelOrder" style="float:left">
+<text>Quer cancelar? tudo bem!</text><br>
+<text>Entre em contanto com o restaurante:</text><br>
+<text>Telefone - 96969-1337</text>
+</div>
+
+</body>
+<script>
+
+function showCancel(){
+	document.getElementById("cancelOrder").style.display = "block";
+}
+
+function showRecebido(){
+	document.getElementById("recebido").style.display = "block";
+	document.getElementById("sButton").style.display = "block";
+	document.getElementById("rButton").style.display = "none";
+}
+
+function showSaiu(){
+	document.getElementById("saiu").style.display = "block";
+	document.getElementById("sButton").style.display = "none";
+	document.getElementById("eButton").style.display = "block";
+}
+
+function showEntregue(){
+	document.getElementById("eButton").style.display = "none";
+	document.getElementById("entregue").style.display = "block";
+	document.getElementById("cancelButton").disabled = true;
+}
+
+</script>
+
+</html>
